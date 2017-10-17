@@ -2,7 +2,7 @@ import { Map, fromJS } from 'immutable'
 import { reducer as MetaReducer } from 'mk-meta-engine'
 import config from './config'
 import { getInitState } from './data'
-import aarGrid from 'mk-aar-grid'
+import extend from './extend'
 
 class reducer {
     constructor(option) {
@@ -12,7 +12,6 @@ class reducer {
     init = (state, option) => {
         const initState = getInitState()
         return this.metaReducer.init(state, initState)
-
     }
 
     load = (state, response) => {
@@ -29,7 +28,7 @@ class reducer {
 
 export default function creator(option) {
     const metaReducer = new MetaReducer(option),
-        gridReducer = new aarGrid.reducer({ ...option, metaReducer, listPath: 'data.list', selectFieldName: 'selected' }),
-        o = new reducer({ ...option, metaReducer, gridReducer })
-    return { ...metaReducer, ...gridReducer, ...o }
+        extendReducer = extend.reducerCreator({ ...option, metaReducer }),
+        o = new reducer({ ...option, metaReducer, extendReducer })
+    return { ...metaReducer, ...extendReducer.gridReducer, ...o }
 }

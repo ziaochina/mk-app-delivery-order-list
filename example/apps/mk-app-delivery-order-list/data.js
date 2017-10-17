@@ -259,8 +259,8 @@ export function getMeta() {
 						children: {
 							name: 'cb',
 							component: 'Checkbox',
-							checked: '{{$isSelectAll()}}',
-							onChange: '{{$selectAll}}'
+							checked: "{{$isSelectAll('dataGrid')}}",
+							onChange: "{{$selectAll('dataGrid')}}"
 						}
 					},
 					cell: {

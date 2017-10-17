@@ -4,18 +4,18 @@ import { fromJS } from 'immutable'
 import config from './config'
 import moment from 'moment'
 import utils from 'mk-utils'
-import aarGrid from 'mk-aar-grid'
+import extend from './extend'
 
 class action {
     constructor(option) {
         this.metaAction = option.metaAction
-        this.gridAction = option.gridAction
+        this.extendAction = option.extendAction
         this.config = config.current
         this.webapi = this.config.webapi
     }
 
     onInit = ({ component, injections }) => {
-        this.gridAction.onInit({ component, injections })
+        this.extendAction.gridAction.onInit({ component, injections })
         this.component = component
         this.injections = injections
         injections.reduce('init')
@@ -140,7 +140,7 @@ class action {
     }
 
     commonFilterChange = async (e) => {
-        
+
         const key = e.target.value
 
         const pagination = this.metaAction.gf('data.pagination').toJS(),
@@ -201,10 +201,10 @@ class action {
 
 export default function creator(option) {
     const metaAction = new MetaAction(option),
-        gridAction = new aarGrid.action({ ...option, metaAction, listPath: 'data.list',selectFieldName: 'selected' }),
-        o = new action({ ...option, metaAction, gridAction })
-    
-    const ret = { ...metaAction, ...gridAction, ...o }
+        extendAction = extend.actionCreator({ ...option, metaAction }),
+        o = new action({ ...option, metaAction, extendAction })
+
+    const ret = { ...metaAction, ...extendAction.gridAction, ...o }
 
     metaAction.config({ metaHandlers: ret })
 

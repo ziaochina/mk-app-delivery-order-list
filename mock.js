@@ -55,7 +55,6 @@ function initMockData() {
 fetch.mock('/v1/deliverOrderList/init', (option) => {
     initMockData()
     var ret = query(option)
-    console.log(option)
     ret.value.ticketTypes = mockData.ticketTypes
     ret.value.customers = mockData.customers
     return ret

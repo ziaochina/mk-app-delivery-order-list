@@ -4,14 +4,19 @@
     &-iconbutton {
         padding: 0 4px !important;
     }
+    &-cell-left {
+        padding-left: 8px;
+        justify-content: flex-start;
+    }
+    &-cell-right {
+        padding-right: 8px;
+        justify-content: flex-end;
+    }
     &-header {
         height: 50px;
         flex: 0 0 50px;
         padding: 0 10px;
         flex-direction: row;
-        border-style: solid;
-        border-width: 0 0 1px;
-        border-color: #e7e6e6;
         &-left {
             flex-direction: row;
             align-items: center;
@@ -39,32 +44,61 @@
                 margin-right: 8px !important;
             }
         }
-	}
-	&-filter{
-		padding: 10px;
-		flex: 0 0 auto;
-		&-header {
-			flex-direction: row;
-			justify-content: space-between;
-		}
-		&-content {
-			flex-direction: row;
-			&-left {
-				flex: 1;
-			}
-			&-right{
-				flex: 0 0 200px;
-			}
-		}
-	}
-	&-tabs{
-		padding: 0px 10px;
-		.ant-tabs-bar{
-			margin-bottom: 0px;
-		}
-	}
+    }
+    &-baseFilter {
+        flex: 0 0 auto;
+        flex-direction: row;
+        margin: 0px 10px 10px 10px;
+        padding: 8px;
+        align-items: center;
+        justify-content: space-between;
+        background-color: aliceblue;
+    }
+    &-advanceFilter {
+        flex-direction: row;
+        flex: 0 0 auto;
+        &-form {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            .mk-form-item {
+                margin-bottom: 14px;
+            }
+            .ant-form-item-label {
+                width: 100px;
+                padding: 0px;
+            }
+            .ant-form-item-control-wrapper {
+                width: 180px;
+            }
+            .mk-select {
+                width: 100%;
+            }
+            .mk-tree-select {
+                width: 100%;
+            }
+            .mk-datepicker {
+                width: 100%;
+            }
+            &-checkbox {
+                .ant-form-item-control-wrapper {
+                    width: 32px;
+                }
+            }
+            .mk-btn {
+                margin-left: 100px;
+            }
+        }
+    }
+    &-tabs {
+        padding: 0px 10px;
+        flex: 0 0 31px;
+        .ant-tabs-bar {
+            margin-bottom: 0px;
+        }
+    }
     &-content {
-		padding: 0px 10px;
+        padding: 0px 10px;
         flex: 1;
     }
     &-footer {

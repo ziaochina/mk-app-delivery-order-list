@@ -18,6 +18,10 @@ class reducer {
         state = this.metaReducer.sf(state, 'data.list', fromJS(response.list))
         state = this.metaReducer.sf(state, 'data.pagination', fromJS(response.pagination))
         state = this.metaReducer.sf(state, 'data.filter', fromJS(response.filter))
+        state = this.metaReducer.sf(state, 'data.total', fromJS(response.total))
+        if(response.customers)
+            state = this.metaReducer.sf(state, 'data.other.customers', fromJS(response.customers))
+        
         return state
     }
 

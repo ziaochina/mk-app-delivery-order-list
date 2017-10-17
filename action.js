@@ -4,15 +4,18 @@ import { fromJS } from 'immutable'
 import config from './config'
 import moment from 'moment'
 import utils from 'mk-utils'
+import aarGrid from 'mk-aar-grid'
 
 class action {
     constructor(option) {
         this.metaAction = option.metaAction
+        this.gridAction = option.gridAction
         this.config = config.current
         this.webapi = this.config.webapi
     }
 
     onInit = ({ component, injections }) => {
+        this.gridAction.onInit({ component, injections })
         this.component = component
         this.injections = injections
         injections.reduce('init')
@@ -172,18 +175,6 @@ class action {
         this.reload()
     }
 
-    isSelectAll = () => {
-        const lst = this.metaAction.gf('data.list')
-        if (!lst || lst.size == 0)
-            return false
-
-        return lst.every(o => o.get('selected'))
-    }
-
-    selectAll = (e) => {
-        this.injections.reduce('selectAll', e.target.checked)
-    }
-
     pageChanged = (current, pageSize) => {
         const filter = this.metaAction.gf('data.filter').toJS()
         this.load({ current, pageSize }, filter)
@@ -210,8 +201,10 @@ class action {
 
 export default function creator(option) {
     const metaAction = new MetaAction(option),
-        o = new action({ ...option, metaAction }),
-        ret = { ...metaAction, ...o }
+        gridAction = new aarGrid.action({ ...option, metaAction, listPath: 'data.list',selectFieldName: 'selected' }),
+        o = new action({ ...option, metaAction, gridAction })
+    
+    const ret = { ...metaAction, ...gridAction, ...o }
 
     metaAction.config({ metaHandlers: ret })
 

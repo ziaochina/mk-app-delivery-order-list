@@ -1,0 +1,23 @@
+{
+  "name": "mk-app-delivery-order-list",
+  "version": "1.0.0",
+  "description": "mk-app-delivery-order-list",
+  "main": "index.js",
+  "directories": {
+    "example": "example"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ziaochina/mk-app-delivery-order-list.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ziaochina/mk-app-delivery-order-list/issues"
+  },
+  "homepage": "https://github.com/ziaochina/mk-app-delivery-order-list#readme"
+}

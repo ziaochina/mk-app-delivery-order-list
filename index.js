@@ -7,7 +7,7 @@ export default {
 	description: "mk-app-delivery-order-list",
 	meta: data.getMeta(),
 	components: [],
-	dependencies:['mk-arr-grid'],
+	dependencies:['mk-aar-grid'],
 	config: config,
 	load: (cb) => {
 		require.ensure([], require => {

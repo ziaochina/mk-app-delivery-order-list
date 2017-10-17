@@ -1,6 +1,6 @@
 {
   "name": "mk-app-delivery-order-list",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "mk-app-delivery-order-list",
   "main": "index.js",
   "directories": {
@@ -15,7 +15,7 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/ziaochina/mk-app-delivery-order-list/issues"
   },

@@ -5,7 +5,6 @@ import appInfo from './index'
 @wrapper(appInfo)
 export default class C extends Component {
 	render() {
-		console.log('render list')
 		return this.props.monkeyKing({ ...this.props, path: 'root' })
 	}
 }

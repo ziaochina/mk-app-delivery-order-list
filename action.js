@@ -134,6 +134,13 @@ class action {
         this.reload()
     }
 
+    modify = (id) => async () => {
+        if (!this.config.apps['mk-app-delivery-order']) {
+            throw '依赖mk-app-delivery-order app,请使用mk clone mk-app-delivery-order命令添加'
+        }
+        this.component.props.setPortalContent &&
+            this.component.props.setPortalContent('存货卡片', 'mk-app-delivery-order', { deliveryOrderId: id })
+    }
 
     toggleShowAdvanceFilter = () => {
         this.metaAction.sf('data.other.isFold', !this.metaAction.gf('data.other.isFold'))

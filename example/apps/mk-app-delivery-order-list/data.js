@@ -340,7 +340,12 @@ export function getMeta() {
 						name: 'cell',
 						component: 'DataGrid.Cell',
 						_power: '({rowIndex})=>rowIndex',
-						children: '{{data.list[_rowIndex].code}}',
+						children: {
+							name: 'link',
+							component: '::a',
+							children: '{{data.list[_rowIndex].code}}',
+							onClick: '{{$modify(data.list[_rowIndex].id)}}'
+						},
 					},
 				}, {
 					name: 'ticketType',
